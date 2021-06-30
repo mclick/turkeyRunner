@@ -1,11 +1,14 @@
 # turkeyRunner
 
 Readme
-
-
-
-
-
 TODO by Matthew
-  -all the code
-Functional Parts
+
+
+
+   -all the code
+   
+   
+   
+   
+   
+   Functional Parts
