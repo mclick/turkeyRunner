@@ -7,10 +7,10 @@ class Turkey extends Phaser.GameObjects.Sprite {
       this.jumpStr = -12;
     }
     update(){
-        if(Phaser.Input.Keyboard.JustDown(keyJump)&&touchingGround){
+        if(Phaser.Input.Keyboard.JustDown(keyJump)&&this.touchingGround){
             this.yVel = this.jumpStr;
         }
-        if(!touchingGround){
+        if(!this.touchingGround){
             if(keyJump.isDown){
                 this.yVel-=gravConst/2;
             }

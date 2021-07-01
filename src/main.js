@@ -9,7 +9,7 @@ let game = new Phaser.Game(config);
 let borderUISize = game.config.height / 15;
 let borderPadding = borderUISize / 3;
 //Useful Constants that are used elsewhere
-let gravConst = 2;
-let speedConst = 2;
+let gravConst = -0.2;
+let speedConst = 1;
 
 let keyJump;
