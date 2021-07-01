@@ -12,6 +12,9 @@ class Turkey extends Phaser.GameObjects.Sprite {
         }
         if(!this.touchingGround){
             if(keyJump.isDown){
+                if(this.yVel>6){
+                    this.yVel = this.yVel/2 +3;
+                }
                 this.yVel-=gravConst/2;
             }
             else{
