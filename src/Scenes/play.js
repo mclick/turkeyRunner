@@ -19,8 +19,15 @@ class Play extends Phaser.Scene {
         this.stick6= new Stick(this, game.config.width * (6/6), game.config.height *(6/6), 'stick',0).setOrigin(0, 0);
 
         keyJump = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+
+        this.timer = 0;
     }
     update(){
+        this.timer+=1/60;
+        if(this.timer>=5){
+            this.timer = 0;
+            speedConst+=1;
+        }
         this.backround.tilePositionX-=2;
         if(this.checkCollision(this.turkey,this.stick1)||this.checkCollision(this.turkey,this.stick2)||
             this.checkCollision(this.turkey,this.stick3)||this.checkCollision(this.turkey,this.stick4)||
