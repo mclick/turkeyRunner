@@ -95,7 +95,7 @@ class Play extends Phaser.Scene {
             }
         }
     }
-
+    //slight variation of checkCollison, that checks if the turkey is just above the ground, rather than if the turkey is touching the ground.
     checkGrounded(turkey,ground){
         if(turkey.x < ground.x + ground.width && 
         turkey.x + turkey.width > ground.x && 
@@ -108,7 +108,7 @@ class Play extends Phaser.Scene {
         }
     }
 
-    checkCollision(turkey, obstacle){
+    checkCollision(turkey, obstacle){ //this is reusable for obstacles and collectables
         if(turkey.x < obstacle.x + obstacle.width && 
         turkey.x + turkey.width > obstacle.x && 
         turkey.y < obstacle.y+obstacle.height&&
