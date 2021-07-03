@@ -8,6 +8,7 @@ class Play extends Phaser.Scene {
         this.load.image('stick','./assets/tempAssets/tempstick.png');
     }
     create(){
+        this.gameOver=false;
         this.backround = this.add.tileSprite(0, 0, 640, 480, 'tempBackround').setOrigin(0, 0);
         this.turkey = new Turkey(this, borderPadding+borderUISize, game.config.height/2, 'turkey').setOrigin(0.5, 0);
 
@@ -23,27 +24,32 @@ class Play extends Phaser.Scene {
         this.timer = 0;
     }
     update(){
-        this.timer+=1/60;
-        if(this.timer>=5){
-            this.timer = 0;
-            speedConst+=1;
+        if(!this.gameOver){
+            this.timer+=1/60;
+            if(this.timer>=5){
+                this.timer = 0;
+                speedConst+=1;
+            }
+            this.backround.tilePositionX-=2;
+            if(this.checkCollision(this.turkey,this.stick1)||this.checkCollision(this.turkey,this.stick2)||
+                this.checkCollision(this.turkey,this.stick3)||this.checkCollision(this.turkey,this.stick4)||
+                this.checkCollision(this.turkey,this.stick5)||this.checkCollision(this.turkey,this.stick6)){
+                    this.turkey.touchingGround=true;
+            }
+            else{
+                this.turkey.touchingGround=false;
+            }
+            this.turkey.update();
+            this.stick1.update();
+            this.stick2.update();
+            this.stick3.update();
+            this.stick4.update();
+            this.stick5.update();
+            this.stick6.update();
+            if(this.turkey.y>game.config.height){
+                this.turkey.reset();
+            }
         }
-        this.backround.tilePositionX-=2;
-        if(this.checkCollision(this.turkey,this.stick1)||this.checkCollision(this.turkey,this.stick2)||
-            this.checkCollision(this.turkey,this.stick3)||this.checkCollision(this.turkey,this.stick4)||
-            this.checkCollision(this.turkey,this.stick5)||this.checkCollision(this.turkey,this.stick6)){
-                this.turkey.touchingGround=true;
-        }
-        else{
-            this.turkey.touchingGround=false;
-        }
-        this.turkey.update();
-        this.stick1.update();
-        this.stick2.update();
-        this.stick3.update();
-        this.stick4.update();
-        this.stick5.update();
-        this.stick6.update();
     }
 
     checkCollision(turkey,ground){
