@@ -4,10 +4,10 @@ class Turkey extends Phaser.GameObjects.Sprite {
       scene.add.existing(this);
       this.yVel = 0;
       this.touchingGround = false;
-      this.jumpStr = -15;
+      this.jumpStr = -10;
     }
     update(){
-        if(Phaser.Input.Keyboard.JustDown(keyJump)&&this.touchingGround){
+        if(keyJump.isDown&&this.touchingGround){
             this.yVel = this.jumpStr;
         }
         if(!this.touchingGround){

@@ -22,6 +22,7 @@ class Play extends Phaser.Scene {
         keyJump = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
         this.timer = 0;
+        speedConst=2;
     }
     update(){
         if(!this.gameOver){
@@ -48,6 +49,26 @@ class Play extends Phaser.Scene {
             this.stick6.update();
             if(this.turkey.y>game.config.height){
                 this.turkey.reset();
+                this.gameOver = true;
+            }
+        }
+        if(this.gameOver){
+            let menuConfig = {
+                fontFamily: 'Courier',
+                fontSize: '28px',
+                backgroundColor: '#F3B141',
+                color: '#843605',
+                align: 'right',
+                padding: {
+                    top: 5,
+                    bottom: 5,
+                },
+                fixedWidth: 0
+            } 
+            this.add.text(game.config.width/2, game.config.height/2-borderUISize-borderPadding, 'GAME OVER', menuConfig).setOrigin(0.5);
+            this.add.text(game.config.width/2, game.config.height/2, 'Space to Return to Menu', menuConfig).setOrigin(0.5);
+            if(Phaser.Input.Keyboard.JustDown(keyJump)){
+                this.scene.start('menuScene');
             }
         }
     }
