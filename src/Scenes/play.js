@@ -84,6 +84,18 @@ class Play extends Phaser.Scene {
             return false;
         }
     }
+
+    checkCollision(turkey, obstacle){
+        if(turkey.x < obstacle.x + obstacle.width && 
+        turkey.x + turkey.width > obstacle.x && 
+        turkey.y < obstacle.y+obstacle.height&&
+        turkey.height + turkey.y > obstacle.y){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }
 
 
