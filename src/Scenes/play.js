@@ -32,9 +32,9 @@ class Play extends Phaser.Scene {
                 speedConst+=1;
             }
             this.backround.tilePositionX-=2;
-            if(this.checkCollision(this.turkey,this.stick1)||this.checkCollision(this.turkey,this.stick2)||
-                this.checkCollision(this.turkey,this.stick3)||this.checkCollision(this.turkey,this.stick4)||
-                this.checkCollision(this.turkey,this.stick5)||this.checkCollision(this.turkey,this.stick6)){
+            if(this.checkGrounded(this.turkey,this.stick1)||this.checkGrounded(this.turkey,this.stick2)||
+                this.checkGrounded(this.turkey,this.stick3)||this.checkGrounded(this.turkey,this.stick4)||
+                this.checkGrounded(this.turkey,this.stick5)||this.checkGrounded(this.turkey,this.stick6)){
                     this.turkey.touchingGround=true;
             }
             else{
@@ -73,11 +73,11 @@ class Play extends Phaser.Scene {
         }
     }
 
-    checkCollision(turkey,ground){
+    checkGrounded(turkey,ground){
         if(turkey.x < ground.x + ground.width && 
         turkey.x + turkey.width > ground.x && 
-        turkey.y < ground.y + ground.height &&
-        turkey.height + turkey.y > ground. y){
+        turkey.y < ground.y&&
+        turkey.height + turkey.y > ground.y){
             return true;
         }
         else{
