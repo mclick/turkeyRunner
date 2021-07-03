@@ -9,7 +9,7 @@ class Play extends Phaser.Scene {
     }
     create(){
         this.gameOver=false;
-        this.backround = this.add.tileSprite(0, 0, 640, 480, 'tempBackround').setOrigin(0, 0);
+        this.backround = this.add.tileSprite(0, 0, 1280, 480, 'tempBackround').setOrigin(0, 0);
         this.turkey = new Turkey(this, borderPadding+borderUISize, game.config.height/2, 'turkey').setOrigin(0.5, 0);
 
         this.stick1= new Stick(this, borderPadding+borderUISize, game.config.height/2+5, 'stick', 0).setOrigin(0, 0);
@@ -23,6 +23,24 @@ class Play extends Phaser.Scene {
 
         this.timer = 0;
         speedConst=2;
+
+        let clockConfig = {
+            fontFamily: 'Courier',
+            fontSize: '28px',
+            backgroundColor: '#F3B141',
+            color: '#843605',
+            align: 'right',
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 0
+        }
+        this.trueClock=0;
+        this.clock = 0;
+        this.clockRight = this.add.text(game.config.width-borderUISize-borderPadding, borderUISize+borderPadding, this.clock , clockConfig).setOrigin(0.5);
+        this.score = 0;
+        this.scoreLeft = this.add.text(borderUISize+borderPadding,borderUISize+borderPadding, this.score, clockConfig).setOrigin(0.5);
     }
     update(){
         if(!this.gameOver){
@@ -51,6 +69,11 @@ class Play extends Phaser.Scene {
                 this.turkey.reset();
                 this.gameOver = true;
             }
+            this.trueClock+=1/60;
+            this.clock=Math.trunc(this.trueClock);
+            this.clockRight.text = this.clock
+            this.score+=speedConst/60;
+            this.scoreLeft.text=Math.trunc(this.score);
         }
         if(this.gameOver){
             let menuConfig = {

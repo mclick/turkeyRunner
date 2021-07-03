@@ -1,4 +1,5 @@
-class Stick extends Phaser.GameObjects.Sprite {
+//this should work for all obstacles regardless of their appearence
+class Obstacle extends Phaser.GameObjects.Sprite {
     constructor(scene, x, y, texture, frame) {
       super(scene, x, y, texture, frame);
       scene.add.existing(this);
@@ -11,7 +12,7 @@ class Stick extends Phaser.GameObjects.Sprite {
     }
 
     reset(){
-        this.x = game.config.width;
-        this.y = game.config.height/2*Math.random()+game.config.height/2;
+        this.x = game.config.width+game.config.width*Math.random();
+        this.y = game.config.height*Math.random();
     }
 }
