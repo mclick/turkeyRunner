@@ -52,6 +52,7 @@ class Play extends Phaser.Scene {
     }
     update(){//update is called 60 times a second
         if(!this.gameOver){
+            this.turkey.bgmTime = this.bgm.seek;
             speedConst+=accelConst;
             this.backround.tilePositionX-=2;
             if(this.checkGrounded(this.turkey,this.stick1)||this.checkGrounded(this.turkey,this.stick2)||

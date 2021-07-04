@@ -8,7 +8,7 @@ class Menu extends Phaser.Scene {
         this.load.audio('die', './assets/finalAssets/sound/die.wav');
         this.load.audio('01turkey', './assets/finalAssets/sound/01turkeyBm.wav');
         this.load.audio('02turkey', './assets/finalAssets/sound/02turkeyG.wav');
-        this.load.audio('03turkey', './assets/finalAssets/sound/01turkeyF#.wav');
+        this.load.audio('03turkey', './assets/finalAssets/sound/03turkeyFsharp.wav');
         this.load.audio('intro', './assets/finalAssets/sound/intro.wav');
         
     }
