@@ -9,8 +9,8 @@ class Play extends Phaser.Scene {
         this.load.image('stick','./assets/tempAssets/tempstick.png');
 
         //final
-        this.load.spritesheet('turkeyRun', './assets/turkeys.png', {frameWidth: 20, frameHeight: 20, startFrame: 0, endFrame: 1});
-        this.load.spritesheet('turkeyFlap', './assets/turkeys.png', {frameWidth: 20, frameHeight: 20, startFrame: 3, endFrame: 4});
+        this.load.spritesheet('turkeyRun', './assets/finalAssets/turkeys.png', {frameWidth: 20, frameHeight: 20, startFrame: 0, endFrame: 1});
+        this.load.spritesheet('turkeyFlap', './assets/finalAssets/turkeys.png', {frameWidth: 20, frameHeight: 20, startFrame: 3, endFrame: 4});
 
         //audio
         this.load.audio('bgm', './assets/finalAssets/sound/bgm.wav');
