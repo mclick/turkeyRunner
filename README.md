@@ -7,4 +7,5 @@ Credits:<br />
   Matthew Click<br />
   Jordan Fickel<br />
 <br /><br /><br />
-GAME CURRENTLY NONFUNCTIONAL
+GAME CURRENTLY NONFUNCTIONAL<br />
+update: game no longer crashes but turkey is invisible
