@@ -21,7 +21,7 @@ class Play extends Phaser.Scene {
         this.gameOver=false;
         this.backround = this.add.tileSprite(0, 0, 1280, 480, 'tempBackround').setOrigin(0, 0);
         //player
-        this.turkey = new Turkey(this, borderPadding+borderUISize, game.config.height/2, 'sprites',0).setOrigin(0.5, 0);
+        this.turkey = new Turkey(this, borderPadding+borderUISize, game.config.height/2, 'turkey').setOrigin(0.5, 0);
         //ground objects
         this.stick1= new Stick(this, borderPadding+borderUISize, game.config.height/2+10, 'stick', 0).setOrigin(0, 0);
         this.stick2= new Stick(this, game.config.width * (2/6), game.config.height *(2/6), 'stick', 0).setOrigin(0, 0);
@@ -62,20 +62,24 @@ class Play extends Phaser.Scene {
         this.anims.create({
             key: 'run',
             frameRate: 30,
-            frames: this.anims.generateFrameNumbers('sprites', { 
-                start: 0,
-                end: 1, 
-                first: 0
-            })
+            frames: this.anims.generateFrameNames('sprites', {
+                prefix:"run",
+                suffix:".png" ,
+                start: 1,
+                end: 2, 
+            }),
+            repeat: -1
         });
         this.anims.create({
             key: 'jump',
             frameRate: 30,
-            frames: this.anims.generateFrameNumbers('sprites', { 
-                start: 3,
-                end: 4, 
-                first: 3
-            })
+            frames: this.anims.generateFrameNames('sprites', {
+                prefix: "fly",
+                suffix: ".png", 
+                start: 1,
+                end: 2, 
+            }),
+            repeat: -1
         });
     }
     update(){//update is called 60 times a second
