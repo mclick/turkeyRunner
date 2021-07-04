@@ -3,6 +3,7 @@ class Play extends Phaser.Scene {
         super("playScene");
     }
     preload(){
+        //temp art assets
         this.load.image('tempBackround','./assets/tempAssets/tempbackround.png');
         this.load.image('turkey','./assets/tempAssets/tempTurk.png');
         this.load.image('stick','./assets/tempAssets/tempstick.png');
