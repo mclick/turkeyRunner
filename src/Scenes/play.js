@@ -6,6 +6,9 @@ class Play extends Phaser.Scene {
         this.load.image('tempBackround','./assets/tempAssets/tempbackround.png');
         this.load.image('turkey','./assets/tempAssets/tempTurk.png');
         this.load.image('stick','./assets/tempAssets/tempstick.png');
+
+        //audio
+        this.load.audio('bgm', './assets/finalAssets/sound/bgm.wav');
     }
     create(){
         this.gameOver=false;
@@ -42,6 +45,10 @@ class Play extends Phaser.Scene {
         this.clockRight = this.add.text(game.config.width-borderUISize-borderPadding, borderUISize+borderPadding, this.clock , clockConfig).setOrigin(0.5);
         this.score = 0;
         this.scoreLeft = this.add.text(borderUISize+borderPadding,borderUISize+borderPadding, this.score, clockConfig).setOrigin(0.5);
+
+        //sound
+        this.bgm = this.sound.add('bgm', { loop: true });
+        this.bgm.play();
     }
     update(){//update is called 60 times a second
         if(!this.gameOver){
@@ -90,6 +97,7 @@ class Play extends Phaser.Scene {
             this.add.text(game.config.width/2, game.config.height/2-borderUISize-borderPadding, 'GAME OVER', menuConfig).setOrigin(0.5);
             this.add.text(game.config.width/2, game.config.height/2, 'Space to Return to Menu', menuConfig).setOrigin(0.5);
             if(Phaser.Input.Keyboard.JustDown(keyJump)){
+                this.bgm.stop();
                 this.scene.start('menuScene');
             }
         }
