@@ -1,8 +1,8 @@
 # turkeyRunner
 
-Game Name:
+Game Name:<br />
 
-Credits:
-  Stanley Caldwell
-  Matthew Click
-  Jordan Fickel
+Credits:<br />
+  Stanley Caldwell<br />
+  Matthew Click<br />
+  Jordan Fickel<br />
