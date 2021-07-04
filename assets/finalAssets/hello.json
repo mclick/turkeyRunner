@@ -1,0 +1,29 @@
+{
+    "frames": {
+        "run1.png": {
+            "frame" : {"x":0,"y":0,"width":20,"height":20},
+            "spriteSourceSize": {"x":0,"y":0,"w":20,"h":20},
+            "sourceSize": {"w":20,"h":20}
+        },
+        "run2.png": {
+            "frame" : {"x":20,"y":0,"width":20,"height":20},
+            "spriteSourceSize": {"x":20,"y":0,"w":20,"h":20},
+            "sourceSize": {"w":20,"h":20}
+        },
+        "jumpLand.png": {
+            "frame" : {"x":0,"y":20,"width":20,"height":20},
+            "spriteSourceSize": {"x":0,"y":20,"w":20,"h":20},
+            "sourceSize": {"w":20,"h":20}
+        },
+        "fly1.png": {
+            "frame" : {"x":20,"y":2,"width":20,"height":20},
+            "spriteSourceSize": {"x":20,"y":20,"w":20,"h":20},
+            "sourceSize": {"w":20,"h":20}
+        },
+        "fly2.png": {
+            "frame" : {"x":0,"y":40,"width":20,"height":20},
+            "spriteSourceSize": {"x":0,"y":40,"w":20,"h":20},
+            "sourceSize": {"w":20,"h":20}
+        }
+    }
+}

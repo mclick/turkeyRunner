@@ -9,6 +9,7 @@ class Play extends Phaser.Scene {
         this.load.image('stick','./assets/tempAssets/tempstick.png');
 
         //final
+        this.load.atlas('sprites',"./assets/finalAssets/turkeySpritesheet.png", "./assets/finalAssets/hello.json");
         this.load.spritesheet('turkeyRun', './assets/finalAssets/turkeys.png', {frameWidth: 20, frameHeight: 20, startFrame: 0, endFrame: 1});
         this.load.spritesheet('turkeyFlap', './assets/finalAssets/turkeys.png', {frameWidth: 20, frameHeight: 20, startFrame: 3, endFrame: 4});
 
@@ -19,7 +20,7 @@ class Play extends Phaser.Scene {
         this.gameOver=false;
         this.backround = this.add.tileSprite(0, 0, 1280, 480, 'tempBackround').setOrigin(0, 0);
         //player
-        this.turkey = new Turkey(this, borderPadding+borderUISize, game.config.height/2, 'turkeyRun').setOrigin(0.5, 0);
+        this.turkey = new Turkey(this, borderPadding+borderUISize, game.config.height/2, 'sprites',0).setOrigin(0.5, 0);
         //ground objects
         this.stick1= new Stick(this, borderPadding+borderUISize, game.config.height/2+10, 'stick', 0).setOrigin(0, 0);
         this.stick2= new Stick(this, game.config.width * (2/6), game.config.height *(2/6), 'stick', 0).setOrigin(0, 0);
@@ -58,13 +59,25 @@ class Play extends Phaser.Scene {
         //animation config
         this.anims.create({
             key: 'run',
-            frames: this.anims.generateFrameNumbers('turkeyRun', { start: 0, end: 1, first: 0}),
-            frameRate: 3000
+            frameRate: 30,
+            frames: this.anims.generateFrameNames('sprites', { 
+                prefix: "run" ,
+                suffix: ".png",
+                start: 0,
+                end: 1, 
+                first: 0
+            })
         });
         this.anims.create({
             key: 'jump',
-            frames: this.anims.generateFrameNumbers('turkeyFlap', { start: 3, end: 4, first: 0}),
-            frameRate: 30
+            frameRate: 30,
+            frames: this.anims.generateFrameNames('sprites', { 
+                prefix: "fly" ,
+                suffix: ".png",
+                start: 3,
+                end: 4, 
+                first: 0
+            })
         });
     }
     update(){//update is called 60 times a second
