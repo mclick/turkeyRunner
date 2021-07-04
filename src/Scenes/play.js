@@ -21,7 +21,6 @@ class Play extends Phaser.Scene {
 
         keyJump = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
-        this.timer = 0;
         speedConst=2;
 
         let clockConfig = {
@@ -42,13 +41,9 @@ class Play extends Phaser.Scene {
         this.score = 0;
         this.scoreLeft = this.add.text(borderUISize+borderPadding,borderUISize+borderPadding, this.score, clockConfig).setOrigin(0.5);
     }
-    update(){
+    update(){//update is called 60 times a second
         if(!this.gameOver){
-            this.timer+=1/60;
-            if(this.timer>=5){
-                this.timer = 0;
-                speedConst+=1;
-            }
+            speedConst+=accelConst;
             this.backround.tilePositionX-=2;
             if(this.checkGrounded(this.turkey,this.stick1)||this.checkGrounded(this.turkey,this.stick2)||
                 this.checkGrounded(this.turkey,this.stick3)||this.checkGrounded(this.turkey,this.stick4)||

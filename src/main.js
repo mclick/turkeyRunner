@@ -11,5 +11,6 @@ let borderPadding = borderUISize / 3;
 //Useful Constants that are used elsewhere
 let gravConst = -0.4;
 let speedConst = 3;
+let accelConst = .2/60;
 
 let keyJump;
