@@ -62,9 +62,7 @@ class Play extends Phaser.Scene {
         this.anims.create({
             key: 'run',
             frameRate: 30,
-            frames: this.anims.generateFrameNames('sprites', { 
-                prefix: "run" ,
-                suffix: ".png",
+            frames: this.anims.generateFrameNumbers('sprites', { 
                 start: 0,
                 end: 1, 
                 first: 0
@@ -73,12 +71,10 @@ class Play extends Phaser.Scene {
         this.anims.create({
             key: 'jump',
             frameRate: 30,
-            frames: this.anims.generateFrameNames('sprites', { 
-                prefix: "fly" ,
-                suffix: ".png",
+            frames: this.anims.generateFrameNumbers('sprites', { 
                 start: 3,
                 end: 4, 
-                first: 0
+                first: 3
             })
         });
     }
