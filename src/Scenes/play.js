@@ -18,6 +18,7 @@ class Play extends Phaser.Scene {
         this.stick4= new Stick(this, game.config.width * (4/6), game.config.height *(4/6), 'stick',0).setOrigin(0, 0);
         this.stick5= new Stick(this, game.config.width * (5/6), game.config.height *(5/6), 'stick',0).setOrigin(0, 0);
         this.stick6= new Stick(this, game.config.width * (6/6), game.config.height *(6/6), 'stick',0).setOrigin(0, 0);
+        this.stick7= new Stick(this, game.config.width /6, game.config.height/6, 'stick',0).setOrigin(0,0);
 
         keyJump = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
@@ -47,7 +48,8 @@ class Play extends Phaser.Scene {
             this.backround.tilePositionX-=2;
             if(this.checkGrounded(this.turkey,this.stick1)||this.checkGrounded(this.turkey,this.stick2)||
                 this.checkGrounded(this.turkey,this.stick3)||this.checkGrounded(this.turkey,this.stick4)||
-                this.checkGrounded(this.turkey,this.stick5)||this.checkGrounded(this.turkey,this.stick6)){
+                this.checkGrounded(this.turkey,this.stick5)||this.checkGrounded(this.turkey,this.stick6)||
+                this.checkGrounded(this.turkey, this.stick7)){
                     this.turkey.touchingGround=true;
             }
             else{
@@ -60,6 +62,7 @@ class Play extends Phaser.Scene {
             this.stick4.update();
             this.stick5.update();
             this.stick6.update();
+            this.stick7.update();
             if(this.turkey.y>game.config.height){
                 this.turkey.reset();
                 this.gameOver = true;
