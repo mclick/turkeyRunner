@@ -41,7 +41,7 @@ class Turkey extends Phaser.GameObjects.Sprite {
         this.y=game.config.height/2;
     }
     playCall(){
-        console.log(this.bgmTime);
+        //console.log(this.bgmTime);
         if ( (this.bgmTime > 0 && this.bgmTime < 6.2) ||
             (this.bgmTime > 13 && this.bgmTime < 19.2) ||
             (this.bgmTime > 26 && this.bgmTime < 32.2) ||
