@@ -12,6 +12,6 @@ class Stick extends Phaser.GameObjects.Sprite {
 
     reset(){
         this.x = game.config.width;
-        this.y = game.config.height/2*Math.random()+game.config.height/2;
+        this.y = game.config.height/2*Math.random()+game.config.height/2+borderUISize;
     }
 }
