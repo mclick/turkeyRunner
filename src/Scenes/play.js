@@ -14,6 +14,7 @@ class Play extends Phaser.Scene {
 
         //audio
         this.load.audio('bgm', './assets/finalAssets/sound/bgm.wav');
+        
     }
     create(){
         this.gameOver=false;
@@ -52,6 +53,7 @@ class Play extends Phaser.Scene {
         this.scoreLeft = this.add.text(borderUISize+borderPadding,borderUISize+borderPadding, this.score, clockConfig).setOrigin(0.5);
 
         //sound
+        this.die = this.sound.add('die');
         this.bgm = this.sound.add('bgm', { loop: true });
         this.bgm.play();
 
@@ -94,6 +96,7 @@ class Play extends Phaser.Scene {
             if(this.turkey.y>game.config.height){
                 this.turkey.reset();
                 this.gameOver = true;
+                this.die.play();
             }
             this.trueClock+=1/60;
             this.clock=Math.trunc(this.trueClock);
