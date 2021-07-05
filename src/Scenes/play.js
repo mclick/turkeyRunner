@@ -5,13 +5,10 @@ class Play extends Phaser.Scene {
     preload(){
         //temp
         this.load.image('tempBackround','./assets/tempAssets/tempbackround.png');
-        this.load.image('turkey','./assets/tempAssets/tempTurk.png');
         this.load.image('stick','./assets/tempAssets/tempstick.png');
 
         //final
         this.load.atlas('sprites','./assets/finalAssets/turkeySpritesheet.png', './assets/finalAssets/hello.json');
-        this.load.spritesheet('turkeyRun', './assets/finalAssets/turkeys.png', {frameWidth: 20, frameHeight: 20, startFrame: 0, endFrame: 1});
-        this.load.spritesheet('turkeyFlap', './assets/finalAssets/turkeys.png', {frameWidth: 20, frameHeight: 20, startFrame: 3, endFrame: 4});
 
         //audio
         this.load.audio('bgm', './assets/finalAssets/sound/bgm.wav');
@@ -20,8 +17,7 @@ class Play extends Phaser.Scene {
     create(){
         this.gameOver=false;
         this.backround = this.add.tileSprite(0, 0, 1280, 480, 'tempBackround').setOrigin(0, 0);
-        //player
-        this.turkey = new Turkey(this, borderPadding+borderUISize, game.config.height/2, 'sprites','run1.png').setOrigin(0.5, 0);
+        this.turkey = new Turkey(this, borderPadding+borderUISize, game.config.height/2, 'run1.png',0).setOrigin(0.5, 0);
         //ground objects
         this.stick1= new Stick(this, borderPadding+borderUISize, game.config.height/2+10, 'stick', 0).setOrigin(0, 0);
         this.stick2= new Stick(this, game.config.width * (2/6), game.config.height *(2/6), 'stick', 0).setOrigin(0, 0);
