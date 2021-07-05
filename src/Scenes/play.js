@@ -44,6 +44,10 @@ class Play extends Phaser.Scene {
             },
             fixedWidth: 0
         }
+        //debug info comment out before release
+        //this.debugInfoX = this.add.text(borderUISize+borderPadding,borderUISize*2+borderPadding*2, this.turkey.x, clockConfig)
+        //this.debugInfoY = this.add.text(borderUISize+borderPadding,borderUISize*3+borderPadding*3, this.turkey.y, clockConfig)
+
         this.trueClock=0;
         this.clock = 0;
         this.clockRight = this.add.text(game.config.width-borderUISize-borderPadding, borderUISize+borderPadding, this.clock , clockConfig).setOrigin(0.5);
@@ -58,7 +62,7 @@ class Play extends Phaser.Scene {
         //animation config
         this.anims.create({
             key: 'run',
-            frameRate: 30,
+            frameRate: 10,
             frames: this.anims.generateFrameNames('sprites',{
                 prefix:"run",
                 suffix:".png" ,
@@ -69,7 +73,7 @@ class Play extends Phaser.Scene {
         });
         this.anims.create({
             key: 'jump',
-            frameRate: 30,
+            frameRate: 10,
             frames: this.anims.generateFrameNames('sprites', {
                 prefix: "fly",
                 suffix: ".png", 
@@ -80,6 +84,10 @@ class Play extends Phaser.Scene {
         });
     }
     update(){//update is called 60 times a second
+        //update debuginfo
+        //this.debugInfoX.text = this.turkey.x
+        //this.debugInfoY.text = this.turkey.y
+
         if(!this.gameOver){
             this.turkey.bgmTime = this.bgm.seek;
             speedConst+=accelConst;
@@ -88,10 +96,12 @@ class Play extends Phaser.Scene {
                 this.checkGrounded(this.turkey,this.stick3)||this.checkGrounded(this.turkey,this.stick4)||
                 this.checkGrounded(this.turkey,this.stick5)||this.checkGrounded(this.turkey,this.stick6)||
                 this.checkGrounded(this.turkey, this.stick7)){
-                    this.turkey.touchingGround=true;
-                    this.turkey.anims.play('run');
+                    if(this.turkey.touchingGround==false){
+                        this.turkey.touchingGround=true;
+                        this.turkey.anims.play('run');
+                    }
             }
-            else{
+            else if(this.turkey.touchingGround==true){
                 this.turkey.touchingGround=false;
                 this.turkey.anims.play('jump');
             }
