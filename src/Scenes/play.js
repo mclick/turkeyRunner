@@ -18,16 +18,16 @@ class Play extends Phaser.Scene {
     create(){
         this.gameOver=false;
         this.backround = this.add.tileSprite(0, 0, 1280, 480, 'tempBackround').setOrigin(0, 0);
-        this.turkey = new Turkey(this, borderPadding+borderUISize, game.config.height/2, 'sprites','run1.png').setOrigin(0.5, 0);
         //ground objects
         this.stick1= new Stick(this, borderPadding+borderUISize, game.config.height/2+10, 'tree', 0).setOrigin(0, 0);
         this.stick2= new Stick(this, game.config.width * (2/6), game.config.height *(2/6), 'tree', 0).setOrigin(0, 0);
         this.stick3= new Stick(this, game.config.width * (3/6), game.config.height *(3/6), 'tree',0).setOrigin(0, 0);
-        this.stick4= new Stick(this, game.config.width * (4/6), game.config.height *(4/6), 'tree',0).setOrigin(0, 0);
-        this.stick5= new Stick(this, game.config.width * (5/6), game.config.height *(5/6), 'tree',0).setOrigin(0, 0);
-        this.stick6= new Stick(this, game.config.width * (6/6), game.config.height *(6/6)-20, 'tree',0).setOrigin(0, 0);
+        this.stick4= new Stick(this, game.config.width * (4/6), game.config.height *(2/6), 'tree',0).setOrigin(0, 0);
+        this.stick5= new Stick(this, game.config.width * (5/6), game.config.height *(3/6), 'tree',0).setOrigin(0, 0);
+        this.stick6= new Stick(this, game.config.width * (6/6), game.config.height *(2/6)-20, 'tree',0).setOrigin(0, 0);
         this.stick7= new Stick(this, game.config.width /6, game.config.height*3/6, 'tree',0).setOrigin(0, 0);
 
+        this.turkey = new Turkey(this, borderPadding+borderUISize, game.config.height/2, 'sprites','run1.png').setOrigin(0.5, 0);
         keyJump = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
         speedConst=2;
@@ -139,8 +139,8 @@ class Play extends Phaser.Scene {
     checkGrounded(turkey,ground){
         if(turkey.x < ground.x + ground.width && 
         turkey.x + turkey.width > ground.x && 
-        turkey.y < ground.y&&
-        turkey.height + turkey.y > ground.y){
+        turkey.y < ground.y+130&&
+        turkey.height + turkey.y > ground.y+130){
             return true;
         }
         else{
