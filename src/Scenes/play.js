@@ -98,11 +98,13 @@ class Play extends Phaser.Scene {
                 this.checkGrounded(this.turkey, this.stick7)){
                     if(this.turkey.touchingGround==false){
                         this.turkey.touchingGround=true;
+                        this.turkey.anims.stop();
                         this.turkey.anims.play('run');
                     }
             }
-            else if(this.turkey.touchingGround==true){
+            else {
                 this.turkey.touchingGround=false;
+                this.turkey.anims.stop();
                 this.turkey.anims.play('jump');
             }
             this.turkey.update();

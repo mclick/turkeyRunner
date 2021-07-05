@@ -12,6 +12,6 @@ let borderPadding = borderUISize / 3;
 //maybe add settings menu to enable player control over these values??
 let gravConst = -0.4;
 let speedConst = 3;
-let accelConst = .15/60;
+let accelConst = .125/60;
 
 let keyJump;
