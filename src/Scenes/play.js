@@ -17,7 +17,7 @@ class Play extends Phaser.Scene {
     create(){
         this.gameOver=false;
         this.backround = this.add.tileSprite(0, 0, 1280, 480, 'tempBackround').setOrigin(0, 0);
-        this.turkey = new Turkey(this, borderPadding+borderUISize, game.config.height/2, 'run1.png',0).setOrigin(0.5, 0);
+        this.turkey = new Turkey(this, borderPadding+borderUISize, game.config.height/2, 'sprites','run1.png').setOrigin(0.5, 0);
         //ground objects
         this.stick1= new Stick(this, borderPadding+borderUISize, game.config.height/2+10, 'stick', 0).setOrigin(0, 0);
         this.stick2= new Stick(this, game.config.width * (2/6), game.config.height *(2/6), 'stick', 0).setOrigin(0, 0);
