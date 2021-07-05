@@ -46,16 +46,16 @@ class Turkey extends Phaser.GameObjects.Sprite {
             (this.bgmTime > 13 && this.bgmTime < 19.2) ||
             (this.bgmTime > 26 && this.bgmTime < 32.2) ||
             (this.bgmTime > 39 && this.bgmTime < 45.2) )
-            this.call1.play({volume: 0.5});
+            this.call1.play({volume: 0.3});
         if ( (this.bgmTime > 6.21 && this.bgmTime < 9.2) ||
             (this.bgmTime > 19.21 && this.bgmTime < 22.2) ||
             (this.bgmTime > 32.21 && this.bgmTime < 35.2) ||
             (this.bgmTime > 45.21 && this.bgmTime < 48.2) )
-            this.call2.play({volume: 0.5});
+            this.call2.play({volume: 0.3});
         if ( (this.bgmTime > 9.21 && this.bgmTime < 12.99) ||
             (this.bgmTime > 22.21 && this.bgmTime < 25.99) ||
             (this.bgmTime > 35.21 && this.bgmTime < 38.99) ||
             (this.bgmTime > 48.21 && this.bgmTime < 53) )
-            this.call3.play({volume: 0.5});
+            this.call3.play({volume: 0.3});
     }
 }

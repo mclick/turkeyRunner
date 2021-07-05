@@ -109,7 +109,7 @@ class Play extends Phaser.Scene {
             if(this.turkey.y>game.config.height){
                 this.turkey.reset();
                 this.gameOver = true;
-                this.die.play();
+                this.die.play({volume: 0.5});
             }
             this.trueClock+=1/60;
             this.clock=Math.trunc(this.trueClock);
