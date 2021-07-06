@@ -10,6 +10,7 @@ class Play extends Phaser.Scene {
         this.load.atlas('sprites','./assets/finalAssets/turkeySpritesheet.png', './assets/finalAssets/turkey.json');
         this.load.image('tree','./assets/finalAssets/tree.png');
         this.load.image('kite','./assets/finalAssets/Sprite-0004.png');
+        this.load.image('squirrel','./assets/finalAssets/skwrl.png');
 
         //audio
         this.load.audio('bgm', './assets/finalAssets/sound/bgm.wav');
@@ -28,8 +29,10 @@ class Play extends Phaser.Scene {
         this.stick7= new Stick(this, game.config.width /6, game.config.height*3/6, 'tree',0).setOrigin(0, 0);
         //kite
         this.kite = new Kite(this, game.config.width,game.config.height*Math.random(),'kite',0).setOrigin(0,0);
+        //squirrel
+        this.squirrel=new Squirrel(this,this.stick6.x+this.stick6.width*Math.random(), this.stick6.y+120,'squirrel',0).setOrigin(0,0);
 
-        this.turkey = new Turkey(this, borderPadding+borderUISize, game.config.height/2, 'sprites','run1.png').setOrigin(0.5, 0);
+        this.turkey = new Turkey(this, borderPadding+borderUISize*2, game.config.height/2, 'sprites','run1.png').setOrigin(0.5, 0);
         keyJump = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
         speedConst=2;
@@ -118,7 +121,12 @@ class Play extends Phaser.Scene {
             this.stick6.update();
             this.stick7.update();
             this.kite.update();
-            if(this.turkey.y>game.config.height||this.checkKiteCollision(this.turkey,this.kite)){
+            this.squirrel.update();
+            if(this.squirrel.x<0-this.squirrel.width){
+                this.squirrel.reset(this.stick6);
+            }
+            if(this.turkey.y>game.config.height||this.checkKiteCollision(this.turkey,this.kite)
+            ||this.checkCollision(this.turkey,this.squirrel)){
                 this.gameOver = true;
                 this.die.play({volume: 0.5});
             }
