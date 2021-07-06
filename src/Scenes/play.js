@@ -3,9 +3,6 @@ class Play extends Phaser.Scene {
         super("playScene");
     }
     preload(){
-        //temp
-        this.load.image('tempBackround','./assets/tempAssets/tempbackround.png');
-
         //final
         this.load.atlas('sprites','./assets/finalAssets/turkeySpritesheet.png', './assets/finalAssets/turkey.json');
         this.load.image('tree','./assets/finalAssets/tree.png');
@@ -98,7 +95,7 @@ class Play extends Phaser.Scene {
         if(!this.gameOver){
             this.turkey.bgmTime = this.bgm.seek;
             speedConst+=accelConst;
-            this.backround.tilePositionX-=2;
+            this.backround.tilePositionX+=2*speedConst;
             if(this.checkGrounded(this.turkey,this.stick1)||this.checkGrounded(this.turkey,this.stick2)||
                 this.checkGrounded(this.turkey,this.stick3)||this.checkGrounded(this.turkey,this.stick4)||
                 this.checkGrounded(this.turkey,this.stick5)||this.checkGrounded(this.turkey,this.stick6)||
@@ -163,8 +160,14 @@ class Play extends Phaser.Scene {
                 },
                 fixedWidth: 0
             } 
+            if(this.score>highScore){
+                highScore=this.score
+            }
             this.add.text(game.config.width/2, game.config.height/2-borderUISize-borderPadding, 'GAME OVER', menuConfig).setOrigin(0.5);
             this.add.text(game.config.width/2, game.config.height/2, 'Space to Return to Menu', menuConfig).setOrigin(0.5);
+            this.str = 'High Score: ';
+
+            this.add.text(game.config.width/2,game.config.height/2+borderUISize+borderPadding, this.str.concat(Math.trunc(highScore)),menuConfig).setOrigin(0.5);
             if(Phaser.Input.Keyboard.JustDown(keyJump)){
                 this.bgm.stop();
                 this.scene.start('menuScene');

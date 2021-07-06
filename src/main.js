@@ -35,5 +35,4 @@ let accelConst = .125/60;
 
 let keyJump;
 
-
-
+let highScore = 0;
