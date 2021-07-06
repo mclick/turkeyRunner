@@ -27,7 +27,7 @@ class Play extends Phaser.Scene {
         this.stick6= new Stick(this, game.config.width * (6/6), game.config.height *(2/6)-20, 'tree',0).setOrigin(0, 0);
         this.stick7= new Stick(this, game.config.width /6, game.config.height*3/6, 'tree',0).setOrigin(0, 0);
         //kite
-        this.kite = new Obstacle(this, game.config.width,game.config.height*Math.random(),'kite',0).setOrigin(0,0);
+        this.kite = new Kite(this, game.config.width,game.config.height*Math.random(),'kite',0).setOrigin(0,0);
 
         this.turkey = new Turkey(this, borderPadding+borderUISize, game.config.height/2, 'sprites','run1.png').setOrigin(0.5, 0);
         keyJump = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);

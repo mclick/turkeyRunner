@@ -1,5 +1,5 @@
 //this should work for all obstacles regardless of their appearence
-class Obstacle extends Phaser.GameObjects.Sprite {
+class Kite extends Phaser.GameObjects.Sprite {
     constructor(scene, x, y, texture, frame) {
       super(scene, x, y, texture, frame);
       scene.add.existing(this);
