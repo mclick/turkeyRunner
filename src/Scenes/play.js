@@ -5,12 +5,16 @@ class Play extends Phaser.Scene {
     preload(){
         //temp
         this.load.image('tempBackround','./assets/tempAssets/tempbackround.png');
-        this.load.image('stick','./assets/tempAssets/tempstick.png');
 
         //final
-        this.load.atlas('sprites','./assets/finalAssets/turkeySpritesheet.png', './assets/finalAssets/hello.json');
+        this.load.atlas('sprites','./assets/finalAssets/turkeySpritesheet.png', './assets/finalAssets/turkey.json');
         this.load.image('tree','./assets/finalAssets/tree.png');
+<<<<<<< HEAD
         this.load.image('background','./assets/finalAssets/background.png');
+=======
+        this.load.image('kite','./assets/finalAssets/Sprite-0004.png');
+        this.load.image('squirrel','./assets/finalAssets/skwrl.png');
+>>>>>>> 9ba8fd61eafba27fe1c8e8315c57fdb57e86a24e
 
         //audio
         this.load.audio('bgm', './assets/finalAssets/sound/bgm.wav');
@@ -20,15 +24,20 @@ class Play extends Phaser.Scene {
         this.gameOver=false;
         this.backround = this.add.tileSprite(0, 0, 1280, 480, 'backround').setOrigin(0, 0);
         //ground objects
-        this.stick1= new Stick(this, borderPadding+borderUISize, game.config.height/2+10, 'tree', 0).setOrigin(0, 0);
+        this.stick7= new Stick(this, borderPadding+borderUISize, game.config.height/2+10, 'tree', 0).setOrigin(0, 0);
         this.stick2= new Stick(this, game.config.width * (2/6), game.config.height *(2/6), 'tree', 0).setOrigin(0, 0);
         this.stick3= new Stick(this, game.config.width * (3/6), game.config.height *(3/6), 'tree',0).setOrigin(0, 0);
         this.stick4= new Stick(this, game.config.width * (4/6), game.config.height *(2/6), 'tree',0).setOrigin(0, 0);
         this.stick5= new Stick(this, game.config.width * (5/6), game.config.height *(3/6), 'tree',0).setOrigin(0, 0);
         this.stick6= new Stick(this, game.config.width * (6/6), game.config.height *(2/6)-20, 'tree',0).setOrigin(0, 0);
-        this.stick7= new Stick(this, game.config.width /6, game.config.height*3/6, 'tree',0).setOrigin(0, 0);
+        this.stick1= new Stick(this, game.config.width /6, game.config.height*3/6, 'tree',0).setOrigin(0, 0);
+        //kite
+        this.kite = new Kite(this, game.config.width,game.config.height*Math.random(),'kite',0).setOrigin(0,0);
+        //squirrel
+        this.squirrel=new Squirrel(this,this.stick6.x+this.stick6.width*Math.random(), this.stick6.y+120,'squirrel',0).setOrigin(0,0);
+        this.currStick=5;
 
-        this.turkey = new Turkey(this, borderPadding+borderUISize, game.config.height/2, 'sprites','run1.png').setOrigin(0.5, 0);
+        this.turkey = new Turkey(this, borderPadding+borderUISize*2, game.config.height/2, 'sprites','run1.png').setOrigin(0.5, 0);
         keyJump = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
         speedConst=2;
@@ -100,12 +109,14 @@ class Play extends Phaser.Scene {
                     if(this.turkey.touchingGround==false){
                         this.turkey.touchingGround=true;
                         this.turkey.anims.stop();
+                        this.turkey.setTexture('sprites','run1.png');
                         this.turkey.anims.play('run');
                     }
             }
             else {
                 this.turkey.touchingGround=false;
                 this.turkey.anims.stop();
+                this.turkey.setTexture('sprites','fly1.png');
                 this.turkey.anims.play('jump');
             }
             this.turkey.update();
@@ -116,8 +127,23 @@ class Play extends Phaser.Scene {
             this.stick5.update();
             this.stick6.update();
             this.stick7.update();
-            if(this.turkey.y>game.config.height){
-                this.turkey.reset();
+            this.kite.update();
+            this.squirrel.update();
+            if(this.squirrel.x<0-this.squirrel.width){
+                switch(this.currStick){
+                    case 0: this.squirrel.reset(this.stick1); break;
+                    case 1: this.squirrel.reset(this.stick2); break;
+                    case 2: this.squirrel.reset(this.stick3); break;
+                    case 3: this.squirrel.reset(this.stick4); break;
+                    case 4: this.squirrel.reset(this.stick5); break;
+                    case 5: this.squirrel.reset(this.stick6); break;
+                    case 6: this.squirrel.reset(this.stick7); break;
+                }
+                this.currStick--;
+                if(this.currStick<0){this.currStick=6;}
+            }
+            if(this.turkey.y>game.config.height||this.checkKiteCollision(this.turkey,this.kite)
+            ||this.checkCollision(this.turkey,this.squirrel)){
                 this.gameOver = true;
                 this.die.play({volume: 0.5});
             }
@@ -153,12 +179,24 @@ class Play extends Phaser.Scene {
         if(turkey.x < ground.x + ground.width && 
         turkey.x + turkey.width > ground.x && 
         turkey.y < ground.y+130&&
-        turkey.height + turkey.y > ground.y+130){
+        turkey.height + turkey.y > ground.y+120){
             return true;
         }
         else{
             return false;
         }
+    }
+
+    checkKiteCollision(turkey,kite){//excludes kites long tail
+        if(turkey.x < kite.x + kite.width && 
+            turkey.x + turkey.width > kite.x && 
+            turkey.y < kite.y+25&&
+            turkey.height + turkey.y > kite.y){
+                return true;
+            }
+            else{
+                return false;
+            }
     }
 
     checkCollision(turkey, obstacle){ //this is reusable for obstacles and collectables
