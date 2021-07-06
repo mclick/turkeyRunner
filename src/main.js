@@ -8,12 +8,10 @@
         Stanley Caldwell:   lead art/visual design
 
     Creative Tilt:
-    Jordan:     Made a 'lofi beat' for the first time. Autotuned 3 different turkey sounds and 
-                programmatically chose which one to use based on what portion of the song is playing
-                (check the playCall method in turkey.js). 
-                Drew a squirrel for the first time.
-    Matthew:
-    Stanley: 
+    Made a 'lofi beat' for the first time. Autotuned 3 different turkey sounds and 
+    programmatically chose which one to use based on what portion of the song is playing
+    (check the playCall method in turkey.js). 
+    Drew a squirrel for the first time.
 */
 
 

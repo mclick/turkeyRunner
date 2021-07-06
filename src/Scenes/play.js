@@ -37,7 +37,7 @@ class Play extends Phaser.Scene {
         speedConst=2;
 
         let clockConfig = {
-            fontFamily: 'Courier',
+            fontFamily: 'Comic Sans',
             fontSize: '28px',
             backgroundColor: '#F3B141',
             color: '#843605',
@@ -149,7 +149,7 @@ class Play extends Phaser.Scene {
         }
         if(this.gameOver){
             let menuConfig = {
-                fontFamily: 'Courier',
+                fontFamily: 'Comic Sans',
                 fontSize: '28px',
                 backgroundColor: '#F3B141',
                 color: '#843605',
