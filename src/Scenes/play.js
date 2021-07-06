@@ -29,7 +29,7 @@ class Play extends Phaser.Scene {
         this.kite = new Kite(this, game.config.width,game.config.height*Math.random(),'kite',0).setOrigin(0,0);
         //squirrel
         this.squirrel=new Squirrel(this,this.stick6.x+this.stick6.width*Math.random(), this.stick6.y+120,'squirrel',0).setOrigin(0,0);
-        this.currStick=5;
+        this.currStick=4;
 
         this.turkey = new Turkey(this, borderPadding+borderUISize*2, game.config.height/2, 'sprites','run1.png').setOrigin(0.5, 0);
         keyJump = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
@@ -39,8 +39,8 @@ class Play extends Phaser.Scene {
         let clockConfig = {
             fontFamily: 'Courier',
             fontSize: '28px',
-            backgroundColor: '#F3B141',
-            color: '#843605',
+            backgroundColor: '#15bfd5',
+            color: '#000000',
             align: 'right',
             padding: {
                 top: 5,
@@ -151,8 +151,8 @@ class Play extends Phaser.Scene {
             let menuConfig = {
                 fontFamily: 'Courier',
                 fontSize: '28px',
-                backgroundColor: '#F3B141',
-                color: '#843605',
+                backgroundColor: '#15bfd5',
+                color: '#000000',
                 align: 'right',
                 padding: {
                     top: 5,
