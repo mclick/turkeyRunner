@@ -10,8 +10,8 @@
     Creative Tilt:
     Made a 'lofi beat' for the first time. Autotuned 3 different turkey sounds and 
     programmatically chose which one to use based on what portion of the song is playing
-    (check the playCall method in turkey.js). 
-    Drew a squirrel for the first time.
+    (check the playCall method in turkey.js). Drew a squirrel for the first time.
+    Tested and iterated on feel and gameplay, adjusting float and fall rate and jump height.
 */
 
 
